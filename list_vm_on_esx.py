@@ -68,7 +68,7 @@ def add_vm(host, list_vm):
     Ajoute la liste des VMs au Vcenter (host)
     '''
     requests.packages.urllib3.disable_warnings() 
-    request_url = "https://nagios.univ-brest.fr:5665/v1/objects/hosts"
+    request_url = arguments.icinga_host+":5665/v1/objects/hosts"
     headers = {
             'Accept': 'application/json',
             'X-HTTP-Method-Override': 'POST'
@@ -85,7 +85,7 @@ def add_vm(host, list_vm):
     if (r.status_code == 200):
         if arguments.verbose:
             print "Result: " + json.dumps(r.json())
-        request_url = "https://nagios.univ-brest.fr:5665/v1/actions/restart-process"
+        request_url = arguments.icinga_host+":5665/v1/actions/restart-process"
         r = requests.post(request_url, headers=headers,
             auth=('root', 'icinga'), verify="/etc/icinga2/pki/ca.crt")
         if arguments.verbose:
