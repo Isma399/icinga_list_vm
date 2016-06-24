@@ -32,6 +32,7 @@ import requests, json
 parser = argparse.ArgumentParser(description=' List VM on Vcenter or ESX',add_help=False)
 parser.add_argument('--file','-f', dest='file', help = 'Authentification file',required=True)
 parser.add_argument('--server','-s', dest='host', help='ESX or Vcenter name as declared in Icinga hosts',required=True)
+parser.add_argument('--icinga_host','-i',dest='icinga_host', help='Icinga Host FQDN',required=True)
 parser.add_argument('--icinga_api_user','-u',dest='icinga_api_user',required=True)
 parser.add_argument('--icinga_api_password','-p',dest='icinga_api_password',required=True)
 parser.add_argument('--verbose','-v',dest='verbose',action='store_true')
