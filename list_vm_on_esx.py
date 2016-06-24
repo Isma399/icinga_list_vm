@@ -87,7 +87,7 @@ def add_vm(host, list_vm):
             print "Result: " + json.dumps(r.json())
         request_url = arguments.icinga_host+":5665/v1/actions/restart-process"
         r = requests.post(request_url, headers=headers,
-            auth=('root', 'icinga'), verify="/etc/icinga2/pki/ca.crt")
+            auth=(arguments.icinga_api_user,arguments.icinga_api_password), verify="/etc/icinga2/pki/ca.crt")
         if arguments.verbose:
             print "-------------------\nResult: " + json.dumps(r.json())
     else:
